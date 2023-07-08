@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .pgn_translator import translate_pgn_game
 
 # Create your views here.
 
@@ -7,6 +8,8 @@ def index(request):
 
     if request.method == 'POST':
         game = request.POST.get('text')
-        translated_game = game.upper()
+        source_language = "en"
+        target_language = "es"
+        translated_game = translate_pgn_game(source_language, target_language, game)
 
     return render(request, 'translator/index.html', {'translated_game': translated_game})
