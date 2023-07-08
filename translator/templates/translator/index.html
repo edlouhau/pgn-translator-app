@@ -4,9 +4,21 @@
 <body>
     {% block content %}
     <div>
-        <h1>PGN TRANSLATOR ON DEVELOPMENT.</h1>
-        
+        <h1>PGN TRANSLATOR.</h1>
     </div>
+
+    <form method="POST" action="{% url 'translated_game' %}">
+        {% csrf_token %}
+        <input type="text" name="text" placeholder="Paste Chess PGN">
+        <button type="submit">Translate</button>
+    </form>
+
+    {% if translated_game %}
+<div>
+    <h2>Translated Game:</h2>
+    <p>{{ translated_game }}</p>
+</div>
+{% endif %}
         
     {% endblock content %}
 </body>
