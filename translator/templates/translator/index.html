@@ -9,16 +9,22 @@
 
     <form method="POST" action="{% url 'translated_game' %}">
         {% csrf_token %}
-        <input type="text" name="text" placeholder="Paste Chess PGN">
+        <select name="option">
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+        </select>
+        <textarea name="text" placeholder="Paste Chess PGN" rows="20" cols="75"></textarea>
         <button type="submit">Translate</button>
     </form>
 
-    {% if translated_game %}
-<div>
-    <h2>Translated Game:</h2>
-    <p>{{ translated_game }}</p>
-</div>
-{% endif %}
+    <form>
+        {% csrf_token %}
+        <select name="option">
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+        </select>
+        <textarea name="text" rows="20" cols="75">{{ translated_game }}</textarea>
+    </form>
         
     {% endblock content %}
 </body>
