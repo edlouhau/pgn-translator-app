@@ -13,7 +13,7 @@
             <option value="en">English</option>
             <option value="es">Spanish</option>
         </select>
-        <textarea name="text" placeholder="Paste Chess PGN" rows="20" cols="75"></textarea>
+        <textarea name="game" placeholder="Paste Chess PGN" rows="20" cols="75">{{ game }}</textarea>
         <button type="submit">Translate</button>
     </form>
 
@@ -23,7 +23,7 @@
             <option value="en">English</option>
             <option value="es">Spanish</option>
         </select>
-        <textarea name="text" rows="20" cols="75">{{ translated_game }}</textarea>
+        <textarea name="game" rows="20" cols="75">{{ translated_game }}</textarea>
     </form>
         
     {% endblock content %}
