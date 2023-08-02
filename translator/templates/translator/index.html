@@ -7,9 +7,20 @@
         <h1>PGN TRANSLATOR.</h1>
     </div>
 
-    <form method="POST" action="{% url 'translated_game' %}">
+    <!-- Refactored Django Form. -->
+
+    <form action="{% url 'translated_game' %}" method="post">
         {% csrf_token %}
-        <select name="option">
+        <button type="submit">Translate</button>
+        {{ form }}
+    </form>
+
+    <!-- End Refactored Django Form. -->
+    
+
+    <!-- <form method="POST" action="{% url 'translated_game' %}">
+        {% csrf_token %}
+        <select name="languages_options">
             <option value="en">English</option>
             <option value="es">Spanish</option>
         </select>
@@ -19,13 +30,23 @@
 
     <form>
         {% csrf_token %}
-        <select name="option">
+        <select name="target_option">
             <option value="en">English</option>
             <option value="es">Spanish</option>
         </select>
         <textarea name="game" rows="20" cols="75">{{ translated_game }}</textarea>
+    </form> -->
+
+    <!-- Django forms.py -->
+    
+    <!-- <form action="/your-name/" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
     </form>
-        
+     -->
+    <!-- End Django forms.py   -->
+    
     {% endblock content %}
 </body>
 </html>
