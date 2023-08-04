@@ -21,5 +21,4 @@ urlpatterns = [
     # path("", include("translator.urls")),
     path('admin/', admin.site.urls),
     path('', views.index, name='translated_game'),
-    # path('name/', views.get_name, name='name_forms'),
 ]
