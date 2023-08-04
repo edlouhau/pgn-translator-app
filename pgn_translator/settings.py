@@ -34,6 +34,7 @@ INSTALLED_APPS = [
 
     #Added apps.
     'translator',
+    'bootstrap5',
 
     #Default Django apps.
     'django.contrib.admin',
