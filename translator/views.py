@@ -12,12 +12,12 @@ def index(request):
         
         if source_lang_form.is_valid():
             game = source_lang_form.cleaned_data['game']
-            source_language = "en"
-            target_language = "es"
+            source_language = "en" # TODO get from game form.
+            target_language = "es" # TODO get from game form.
             translated_game = translate_pgn_game(source_language, target_language, game)
             target_lang_form = TranslatedGame(initial={'translated_pgn': translated_game})
             context =  {'source_form': source_lang_form, 'target_form': target_lang_form, 'translated_game': translated_game}
-            return render(request, 'translator/index.html', context )
+    
     else:
         source_lang_form = GameForm()
         target_lang_form = TranslatedGame()
