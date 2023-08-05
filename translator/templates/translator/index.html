@@ -4,9 +4,6 @@
 
 <body>
     {% block content %}
-    <div>
-        <h1>PGN TRANSLATOR.</h1>
-    </div>
     <section>
         <form action="{% url 'translated_game' %}" method="post">
             {% csrf_token %}
