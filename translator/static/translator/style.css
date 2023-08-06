@@ -9,3 +9,11 @@ nav {
 .logo {
     width:140px;
 }
+
+.translator__forms {
+    margin: 10rem ;
+}
+
+.target_form {
+    margin-left: 0.6rem;
+}
