@@ -11,8 +11,9 @@
             <button class="btn translate__btn mt-3" type="submit">Translate</button>
         </form>
 
-        <form class="target__form" action="{% url 'translated_game' %}" method="post" disabled>
-            {{ target_form.translated_pgn }}
+        <form class="target__form" action="{% url 'translated_game' %}" method="post">
+            {% csrf_token %}
+            {{ target_form.as_div}}
         </form>
     </section>
     {% endblock content %}
