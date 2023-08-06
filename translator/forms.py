@@ -1,8 +1,23 @@
 from django import forms
 
 LANGUAGE_CHOICES = [
-    ("en", "English"),
-    ("es", "Spanish"),
+    ("en", "English"),    # English
+    ("es", "Spanish"),    # Spanish
+    ("cs", "Czech"),      # Czech
+    ("da", "Danish"),     # Danish
+    ("nl", "Dutch"),      # Dutch
+    ("et", "Estonian"),   # Estonian
+    ("fi", "Finnish"),    # Finnish
+    ("fr", "French"),     # French
+    ("de", "German"),     # German
+    ("he", "Hungarian"),  # Hungarian
+    ("is", "Icelandic"),  # Icelandic
+    ("it", "Italian"),    # Italian
+    ("no", "Norwegian"),  # Norwegian
+    ("pl", "Polish"),     # Polish
+    ("pt", "Portuguese"), # Portuguese
+    ("ro", "Romanian"),   # Romanian
+    ("sv", "Swedish"),  # Swedish
 ]
 
 class GameForm(forms.Form):
