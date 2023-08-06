@@ -8,7 +8,7 @@
         <form class="source__form" action="{% url 'translated_game' %}" method="post">
             {% csrf_token %}
             {{ source_form }}
-            <button class="btn " type="submit">Translate</button>
+            <button class="btn translate__btn mt-3" type="submit">Translate</button>
         </form>
 
         <form class="target__form" action="{% url 'translated_game' %}" method="post" disabled>

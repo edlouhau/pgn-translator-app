@@ -2,6 +2,11 @@ body {
     background-color:#F0F6FF;
 }
 
+.translate__btn {
+    background-color:#5289B5 ;
+    color: #ffffff;
+}
+
 nav {
     background-color: rgb(255, 255, 255);
 }
