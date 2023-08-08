@@ -19,11 +19,7 @@ def index(request):
             translated_game = translate_pgn_game(source_language, target_language, game)
             target_lang_form = TranslatedGame(initial={'target_lang_choices': target_language, 'translated_pgn': translated_game})
             context['translated_game'] = translated_game
-            print('The request method is:', request.method) #TODO Remove print statements.
-            print('The POST data is:', request.POST)
-            print('Source_language', source_language)
-            print('Target_language', target_language)
-            
+           
     else:
         source_lang_form = GameForm()
         target_lang_form = TranslatedGame()
