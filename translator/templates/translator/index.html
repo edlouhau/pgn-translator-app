@@ -5,18 +5,13 @@
 <body>
     {% block content %}
     <section class="container mx-auto d-flex justify-content-center translator__forms">
-        <form class="source__form" action="{% url 'translated_game' %}" method="post">
+        <form class="source__form " action="{% url 'translated_game' %}" method="post">
             {% csrf_token %}
             {{ source_form }}
             <button class="btn shadow-sm mt-4 translate__btn" type="submit">Translate</button>
-        </form>
-
-        <form class="target__form" action="{% url 'translated_game' %}" method="post">
-            {% csrf_token %}
             {{ target_form.as_div}}
         </form>
     </section>
     {% endblock content %}
 </body>
-
 </html>
