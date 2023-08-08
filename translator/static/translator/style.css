@@ -1,4 +1,13 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     background-color:#F0F6FF;
 }
 
@@ -23,6 +32,11 @@ nav {
     margin-right: 1rem;
 }
 
+footer {
+    height: 100px;
+    margin-top: auto;
+}
+
 @media only screen and (max-width: 768px) {
     
     .translator__forms {
@@ -35,3 +49,4 @@ nav {
     }
         
 }
+
