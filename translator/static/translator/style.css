@@ -26,12 +26,12 @@ nav {
 @media only screen and (max-width: 768px) {
     
     .translator__forms {
-        margin: 6rem ;
+        margin: 5rem ;
     }
-    
+
     .target__form {
         margin-right: 0rem;
-        margin-bottom: 4rem;
+        margin-bottom: 3rem;
     }
-    
-  }
+        
+}

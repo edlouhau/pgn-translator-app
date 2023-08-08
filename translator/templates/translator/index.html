@@ -9,8 +9,10 @@
             {% csrf_token %}
             <div class="d-md-flex justify-content-center ">
                <div class="target__form">
-                    {{ source_form.as_div }}
-                    <button class="btn shadow-sm mt-4 translate__btn" type="submit">Translate</button>
+                    {{ source_form}}
+                    <div class="d-grid d-md-block">
+                        <button class="btn shadow-sm mt-4 translate__btn" type="submit">Translate</button>
+                    </div>
                 </div>
                 <div>
                     {{ target_form.as_div}}
