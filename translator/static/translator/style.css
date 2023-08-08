@@ -20,5 +20,18 @@ nav {
 }
 
 .target__form {
-    margin-left: 1rem;
+    margin-right: 1rem;
 }
+
+@media only screen and (max-width: 768px) {
+    
+    .translator__forms {
+        margin: 6rem ;
+    }
+    
+    .target__form {
+        margin-right: 0rem;
+        margin-bottom: 4rem;
+    }
+    
+  }
