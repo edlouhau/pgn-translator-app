@@ -16,6 +16,10 @@ body {
     color: #ffffff;
 }
 
+.translate__btn:hover {
+    background-color:#88a9c1 ;
+}
+
 nav {
     background-color: rgb(255, 255, 255);
 }
