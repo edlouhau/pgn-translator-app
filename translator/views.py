@@ -4,10 +4,6 @@ from .forms import GameForm
 from .forms import TranslatedGame
 from deep_translator import GoogleTranslator
 
-
-            
-
-
 # Create your views here.
 
 def index(request):
