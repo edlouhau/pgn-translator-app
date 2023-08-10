@@ -4,7 +4,7 @@
 
 {% block content %}
 <section class="container mx-auto translator__forms">
-    <form id="sourceForm" action="{% url 'translated_game' %}" method="post">
+    <form id="forms" action="{% url 'translated_game' %}" method="post">
         {% csrf_token %}
         <div class="d-md-flex justify-content-center ">
             <div class="target__form">
