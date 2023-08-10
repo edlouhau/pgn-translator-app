@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 {% extends "translator/base.html" %}
+{% load static %}
 
 {% block content %}
 <section class="container mx-auto translator__forms">
-    <form action="{% url 'translated_game' %}" method="post">
+    <form id="sourceForm" action="{% url 'translated_game' %}" method="post">
         {% csrf_token %}
         <div class="d-md-flex justify-content-center ">
             <div class="target__form">
                 {{ source_form}}
-                <div class="d-grid d-md-block">
+                <!-- <div class="d-grid d-md-block">
                     <button class="btn shadow-sm mt-4 translate__btn" type="submit">Translate</button>
-                </div>
+                </div> -->
             </div>
             <div>
                 {{ target_form.as_div}}
@@ -18,4 +19,6 @@
         </div>
     </form>
 </section>
+
+<script src="{% static 'translator/index.js' %}"></script>
 {% endblock content %}
