@@ -10,6 +10,9 @@ body {
     flex-direction: column;
     background-color:#F0F6FF;
 }
+a {
+    text-decoration: none;
+}
 
 .translate__btn {
     background-color:#5289B5 ;
