@@ -23,6 +23,7 @@ targetDropdown.addEventListener('change', function() {
 
 function sampleGame() {
     document.getElementById("id_game").innerHTML = '1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 {This opening is called the Ruy Lopez.}';
+    sourceDropdown.value = "en"
 }
 
 
