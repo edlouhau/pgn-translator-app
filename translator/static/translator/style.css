@@ -39,6 +39,16 @@ nav {
     margin-right: 1rem;
 }
 
+/* About section. */
+
+.about__intro {
+    margin-top: 7rem;
+}
+
+.languages__supported {
+    margin-bottom: 10rem;
+}
+
 footer {
     height: 100px;
     margin-top: auto;

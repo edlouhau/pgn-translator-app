@@ -3,6 +3,51 @@
 {% load static %}
 
 {% block content %}
-<h1>About Page</h1>
+<!-- Intro -->
+<section class="text-dark p-5 p-lg-0 pt-lg-5 text-center text-sm-start about__intro">
+    <div class="container">
+       <div class="d-sm-flex align-items-center justify-content-between">
+        <div>
+            <h1>Translate <span class="text-info"> PGN Files</span></h1>
+            <p class="lead my-3">
+                 And enjoy chess game notated in different languages.
+            </p> 
+        </div>
+            <img class="img-fluid w-50 d-none d-sm-block" src="{% static 'translator/img/world_green.svg' %}" alt="World map."> 
+       </div> 
+    </div>
+</section>
+
+<!-- About -->
+
+<section class="container pt-lg-5 mt-lg-5">
+    <h2>What is the PGN Translator</h2>
+    <p>
+        The PGN Translator helps bridge the language barrier in the chess community. This project is designed to provide chess players worldwide with a tool to translate chess game notations, known as PGN (Portable Game Notation). 
+    </p>
+</section>
+
+<!-- Languages  -->
+
+<section id="learn" class="pt-lg-5 mt-lg-5 languages__supported">
+    <div class="container">
+       <div class="row align-items-center justify-content-between">
+        <div class="col-md">
+            <img src="{% static 'translator/img/flags_arrows.svg' %}" class="img-fluid" width="400" alt="Countries flags.">
+        </div>
+        <div class="col-md p-5">
+            <h2>Support Multiples Languages</h2>
+            <p>
+                It has the ability to translate into multiple languages while maintaining the original format for an easy process of chess game data using PGN.
+            </p>
+            <h4>Here are the languages supported:</h4>
+            <p class="lead text-primary">
+                English, Czech, Danish, Dutch, Estonian, Finnish, French, German, Hungarian, Icelandic, Italian, Norwegian, Polish, Portuguese, Romanian, Spanish and Swedish.
+            </p>
+        </div>
+       </div> 
+    </div>
+</section>
+
 <script src="{% static 'translator/index.js' %}"></script>
 {% endblock content %}
