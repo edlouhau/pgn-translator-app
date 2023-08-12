@@ -31,5 +31,7 @@ def index(request):
     context.update({'source_form': source_lang_form, 'target_form': target_lang_form})
     return render(request, 'translator/index.html', context)
 
+def about(request):
+    return render(request, "translator/about.html")
 
 
