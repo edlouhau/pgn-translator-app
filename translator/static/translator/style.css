@@ -64,6 +64,15 @@ footer {
         margin-right: 0rem;
         margin-bottom: 3rem;
     }
+
+    .languages__supported {
+        margin-top: 5rem;
+        margin-bottom: 3rem;
+    }
+
+    .about__intro {
+        margin-top: 3rem;
+    }
         
 }
 
