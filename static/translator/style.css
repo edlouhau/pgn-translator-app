@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color:#F0F6FF;
+}
+a {
+    text-decoration: none;
+}
+
+.translate__btn {
+    background-color:#5289B5 ;
+    color: #ffffff;
+}
+
+.translate__btn:hover {
+    background-color:#88a9c1 ;
+}
+
+nav {
+    background-color: rgb(255, 255, 255);
+}
+
+.logo {
+    width:140px;
+}
+
+.translator__forms {
+    margin: 10rem ;
+}
+
+.target__form {
+    margin-right: 1rem;
+}
+
+/* About section. */
+
+.about__intro {
+    margin-top: 7rem;
+}
+
+.languages__supported {
+    margin-bottom: 10rem;
+}
+
+footer {
+    height: 100px;
+    margin-top: auto;
+}
+
+@media only screen and (max-width: 768px) {
+    
+    .translator__forms {
+        margin: 5rem ;
+    }
+
+    .target__form {
+        margin-right: 0rem;
+        margin-bottom: 3rem;
+    }
+
+    .languages__supported {
+        margin-top: 5rem;
+        margin-bottom: 3rem;
+    }
+
+    .about__intro {
+        margin-top: 3rem;
+    }
+        
+}
+
