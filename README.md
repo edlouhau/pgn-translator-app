@@ -1,18 +1,11 @@
 <a name="readme-top"></a>
 
-
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href="https://www.pgntranslator.com/about/">
+    <img src="readme_images/Logo.png" alt="Logo" width="300">
   </a>
-
-  <h3 align="center">PGN Translator</h3>
 
   <p align="center">
     An easy way to translate Portable Game Notation (PGN)!
@@ -46,14 +39,14 @@
   </ol>
 </details>
 
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
 Chess is a universal game loved by people from various cultures and backgrounds. The PGN Translator is a web application that bridges the language barrier in the chess community. This project is designed to provide chess players worldwide with a practical and more precise solution to translate chess game notations, known as PGN (Portable Game Notation).
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![PGN Trnaslator][product-screenshot]](https://www.pgntranslator.com/)
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
 
@@ -77,13 +70,9 @@ Chess is a universal game loved by people from various cultures and backgrounds.
 
 Distributed under the MIT License.
 
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
-
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/in/eduardolouhau/
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: readme_images/Project-screenshot.png
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
 [Bootstrap-url]: https://getbootstrap.com
