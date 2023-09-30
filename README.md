@@ -10,7 +10,7 @@
   <p align="center">
     An easy way to translate Portable Game Notation (PGN)!
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Visit the PGN Translator »</strong></a>
+    <a href="https://www.pgntranslator.com/"><strong>Visit the PGN Translator »</strong></a>
     <br />
     <br />
   </p>
@@ -50,8 +50,11 @@ Chess is a universal game loved by people from various cultures and backgrounds.
 
 ### Built With
 
+* [![HTML][HTML5]][HTML5-url]
+* [![CSS][CSS3]][CSS3-url]
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
+* [![Python Language][Python]][Python-url]
+* [![Django framework][Django]][Django-url]
 
 
 <!-- GETTING STARTED -->
@@ -74,5 +77,13 @@ Distributed under the MIT License.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [product-screenshot]: readme_images/Project-screenshot.png
+[HTML5]: https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
+[HTML5-url]: https://developer.mozilla.org/en-US/docs/Web/HTML
+[CSS3]: https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
+[CSS3-url]: https://developer.mozilla.org/en-US/docs/Web/CSS
+[Python]: https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue
+[Python-url]: https://www.python.org/
+[Django]: https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=green
+[Django-url]: https://www.djangoproject.com/
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
 [Bootstrap-url]: https://getbootstrap.com
