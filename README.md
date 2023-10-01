@@ -23,19 +23,12 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#supported-languages">Suppported Languages</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
 
@@ -46,7 +39,15 @@ Chess is a universal game loved by people from various cultures and backgrounds.
 
 [![PGN Trnaslator][product-screenshot]](https://www.pgntranslator.com/)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+### Features
+
+* Translate PGN game notations into various languages.
+* Retain the original game format for easy integration.
+* User-friendly web interface for an intuitive experience.
+
+### Supported Languages
+
+English, Czech, Danish, Dutch, Estonian, Finnish, French, German, Hungarian, Icelandic, Italian, Norwegian, Polish, Portuguese, Romanian, Spanish and Swedish.
 
 ### Built With
 
@@ -56,22 +57,13 @@ Chess is a universal game loved by people from various cultures and backgrounds.
 * [![Python Language][Python]][Python-url]
 * [![Django framework][Django]][Django-url]
 
-
-<!-- GETTING STARTED -->
-## Getting Started
-
-
-
-
-<!-- USAGE EXAMPLES -->
+<!-- USAGE -->
 ## Usage
 
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License.
+1. Open your web browser and go to <a href="https://www.pgntranslator.com/"><strong>www.pgntranslator.com</strong></a> to access the application.
+2. Paste the PGN notation in the provided text area.
+3. Select the target language from the dropdown menu.
+4. The PGN will be translated automatically.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
