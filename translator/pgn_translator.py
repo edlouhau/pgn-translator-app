@@ -1,4 +1,5 @@
 import re
+from deep_translator import GoogleTranslator
 
 languages = {
     "en": ["P", "N", "B", "R", "Q", "K"],  # English
@@ -17,9 +18,8 @@ languages = {
     "pl": ["P", "S", "G", "W", "H", "K"],  # Polish
     "pt": ["P", "C", "B", "T", "D", "R"],  # Portuguese
     "ro": ["P", "C", "N", "T", "D", "R"],  # Romanian
-    "sv": ["B", "S", "L", "T", "D", "K"],  # Swedish
+    "sv": ["B", "S", "L", "T", "D", "K"]   # Swedish
 }
-
 
 def translate_pgn_game(source_language, target_language, game):
     if source_language not in languages.keys():
@@ -50,3 +50,13 @@ def translate_pgn_game(source_language, target_language, game):
 
     game = re.sub(pattern,replace,game) 
     return(game)
+
+def natural_lang_translator(source_language, target_language, game):
+    tags_comments_pattern = r'\{.*?\}|\[.*?\]'
+    
+    def translator(match):
+        translator = GoogleTranslator(source=source_language, target=target_language)
+        return translator.translate(match.group())
+    
+    game = re.sub(tags_comments_pattern, lambda x: translator(x), game)
+    return game
