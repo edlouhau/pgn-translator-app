@@ -37,7 +37,7 @@
 
 Chess is a universal game loved by people from various cultures and backgrounds. The PGN Translator is a web application that bridges the language barrier in the chess community. This project is designed to provide chess players worldwide with a practical and more precise solution to translate chess game notations, known as PGN (Portable Game Notation).
 
-[![PGN Trnaslator][product-screenshot]](https://www.pgntranslator.com/)
+[![PGN Translator][product-screenshot]](https://www.pgntranslator.com/)
 
 ### Features
 
