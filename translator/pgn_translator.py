@@ -52,7 +52,7 @@ def translate_pgn_game(source_language, target_language, game):
     return(game)
 
 def natural_lang_translator(source_language, target_language, game):
-    tags_comments_pattern = r'\{.*?\}|\[.*?\]'
+    tags_comments_pattern = r'\{[\s\S]*?\}|\[[\s\S]*?\]'
     
     def translator(match):
         translator = GoogleTranslator(source=source_language, target=target_language)
