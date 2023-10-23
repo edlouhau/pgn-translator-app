@@ -1,4 +1,5 @@
 import re
+from deep_translator import GoogleTranslator
 
 languages = {
     "en": ["P", "N", "B", "R", "Q", "K"],  # English
@@ -17,7 +18,7 @@ languages = {
     "pl": ["P", "S", "G", "W", "H", "K"],  # Polish
     "pt": ["P", "C", "B", "T", "D", "R"],  # Portuguese
     "ro": ["P", "C", "N", "T", "D", "R"],  # Romanian
-    "sv": ["B", "S", "L", "T", "D", "K"],  # Swedish
+    "sv": ["B", "S", "L", "T", "D", "K"]   # Swedish
 }
 
 
@@ -26,14 +27,14 @@ def translate_pgn_game(source_language, target_language, game):
         raise ValueError(f"Invalid source language: {source_language}.")
     if target_language not in languages.keys():
         raise ValueError(f"Invalid target language: {target_language}.")
-    
+
     languages_piece_letters = languages[source_language]
     piece_letters = "".join(languages_piece_letters)
 
     pattern = f'[{piece_letters}]?[a-h]?[1-8]?[x]?[a-h][1-8][+#]?[?!]*'
-    piece_move = re.findall(pattern,game)
+    piece_move = re.findall(pattern, game)
     all_moves = " ".join(piece_move)
-    
+
     source_and_target_language_map = {}
     for source, target in zip(languages[source_language], languages[target_language]):
         source_and_target_language_map[source] = target
@@ -41,12 +42,28 @@ def translate_pgn_game(source_language, target_language, game):
     for token_character in source_and_target_language_map.keys():
         source_lang_character = token_character
         target_lang_character = source_and_target_language_map[token_character]
-        all_moves = all_moves.replace(source_lang_character, target_lang_character)
-    
+        all_moves = all_moves.replace(
+            source_lang_character, target_lang_character)
+
     all_moves = all_moves.split()
-    
+
     def replace(_):
         return all_moves.pop(0)
 
-    game = re.sub(pattern,replace,game) 
-    return(game)
+    game = re.sub(pattern, replace, game)
+    return (game)
+
+
+def translate_tags_comments(source_language, target_language, game):
+    """
+    Finds the comments in the game, translates them, and replaces them.
+    """
+    tags_comments_pattern = r'\{[\s\S]*?\}|\[[\s\S]*?\]'
+
+    def translator(match):
+        translator = GoogleTranslator(
+            source=source_language, target=target_language)
+        return translator.translate(match.group())
+
+    game = re.sub(tags_comments_pattern, lambda x: translator(x), game)
+    return game
