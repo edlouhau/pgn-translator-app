@@ -1,11 +1,7 @@
 from django.shortcuts import render
-from .pgn_translator import translate_pgn_game
-from .pgn_translator import translate_tags_comments
+from logic_tests.src.main import translate_pgn_game, translate_tags_comments
 from .forms import GameForm
 from .forms import TranslatedGame
-from deep_translator import GoogleTranslator
-
-# Create your views here.
 
 
 def index(request):
