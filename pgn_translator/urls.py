@@ -15,10 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from translator import views
+from app.pgn_translator import views
 
 urlpatterns = [
-    # path("", include("translator.urls")),
+    # path("", include("pgn_translator.urls")),
     path('admin/', admin.site.urls),
     path('', views.index, name='translated_game'),
     path('about/', views.about, name='about'),
