@@ -1,5 +1,6 @@
 import unittest
-from src.main import translate_tags_comments
+from translator.pgn_translator import translate_tags_comments
+
 
 valid_tags_comments_case = [
     {

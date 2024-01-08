@@ -1,5 +1,5 @@
 import unittest
-from src.main import translate_pgn_move_token
+from translator.pgn_translator import translate_pgn_move_token
 
 valid_test_cases = [
     {

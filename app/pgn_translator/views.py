@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from logic_tests.src.main import translate_pgn_game, translate_tags_comments
+from app.pgn_translator.translate_pgn import translate_pgn_game, translate_tags_comments
 from .forms import GameForm
 from .forms import TranslatedGame
 
@@ -31,8 +31,7 @@ def index(request):
 
     context.update({'source_form': source_lang_form,
                    'target_form': target_lang_form})
-    return render(request, 'translator/index.html', context)
-
+    return render(request, 'pgn_translator/index.html', context)
 
 def about(request):
-    return render(request, "translator/about.html")
+    return render(request, "pgn_translator/about.html")
