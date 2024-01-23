@@ -5,9 +5,9 @@ from .forms import TranslatedGame
 from .forms import UploadPgnForm
 
 def handle_uploaded_file(f):   
-    with open('pgn-translator/uploads/'+f.name, 'wb+') as destination:   
-        for game in f.games(): 
-            destination.write(game) 
+    with open('app/pgn_translator/uploads/'+f.name, 'wb+') as destination:   
+        for chunk in f.chunks(): 
+            destination.write(chunk)
 
 def index(request):
     context = {}
