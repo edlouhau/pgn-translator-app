@@ -20,11 +20,6 @@ LANGUAGE_CHOICES = [
     ("sv", "Swedish"),    # Swedish
 ]
 
-GAMES_LIST = [
-    ("Game 1", "Game 1"),
-    ("Game 2", "Game 2"),
-    ("Game 3", "Game 3"),
-]
 
 class UploadPgnForm(forms.Form):
     upload_pgn_file = forms.FileField()
