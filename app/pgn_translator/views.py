@@ -1,13 +1,40 @@
+from typing import IO
 from django.shortcuts import render
 from app.pgn_translator.translate_pgn import translate_pgn_game, translate_tags_comments
 from .forms import GameForm
 from .forms import TranslatedGame
 from .forms import UploadPgnForm
 
-def handle_uploaded_file(f):   
-    with open('app/pgn_translator/uploads/'+f.name, 'wb+') as destination:   
-        for chunk in f.chunks(): 
+def write_to_disk(file_upload_stream: IO[str]) -> None:
+    """
+    Writes an IO stream to file on disk
+
+    Args:
+        file_upload_stream (IO[str]): The file to write to disk
+    """
+    with open('app/pgn_translator/uploads/'+file_upload_stream.name, 'wb+') as destination:
+        for chunk in file_upload_stream.chunks():
             destination.write(chunk)
+
+def read_from_disk(file: IO[str]) -> str:
+    """
+    Loads a string from a file on disk
+
+    Args:
+        file (IO[str]): The file to read from disk
+
+    Returns:
+        str: The content of the file
+    """
+    with open('app/pgn_translator/uploads/'+file.name, 'r') as file:
+        content = file.read()
+        return content
+
+def handle_uploaded_file(f):
+    write_to_disk(f)
+    content = read_from_disk(f)
+    return content
+
 
 def index(request):
     context = {}
@@ -16,8 +43,10 @@ def index(request):
         
         input_pgn_file_form = UploadPgnForm(request.POST,request.FILES)
         if input_pgn_file_form.is_valid(): 
-            handle_uploaded_file(request.FILES["upload_pgn_file"]) 
-        
+            pgn_content= handle_uploaded_file(request.FILES["upload_pgn_file"])
+            context['file_content'] = pgn_content 
+            game = pgn_content
+
         source_lang_form = GameForm(request.POST)
         target_lang_form = TranslatedGame(request.POST)
         
