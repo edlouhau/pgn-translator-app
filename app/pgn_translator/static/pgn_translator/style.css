@@ -14,9 +14,14 @@ a {
     text-decoration: none;
 }
 
-.translate__btn {
-    background-color:#5289B5 ;
-    color: #ffffff;
+.nav__btn {
+    background-color: #88a9c1;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .translate__btn:hover {
@@ -52,6 +57,20 @@ nav {
 footer {
     height: 100px;
     margin-top: auto;
+}
+
+/* file_upload page */
+
+.pgn__game {
+    height: 20rem;
+    border : 1px solid #88a9c1;
+    background: #ffffff;
+}
+
+/* pages__selection */
+
+.pages__selection {
+    margin-bottom: 5rem;
 }
 
 @media only screen and (max-width: 768px) {
