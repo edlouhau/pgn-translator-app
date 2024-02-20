@@ -26,5 +26,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='translated_game'),
     path('about/', views.about, name='about'),
+    path('file_upload/', views.file_upload, name='file_upload'),
     path('media/<path:path>/', serve, {'document_root': settings.MEDIA_ROOT}),
 ]

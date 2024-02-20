@@ -23,9 +23,20 @@ LANGUAGE_CHOICES = [
 
 class UploadPgnForm(forms.Form):
     upload_pgn_file = forms.FileField()
+    # upload_form_source_lang_choices = forms.CharField(label='', widget=forms.Select(choices=LANGUAGE_CHOICES, attrs={
+    #                                       'class': 'mb-4 shadow-sm dropdown btn btn-outline-secondary'}), required=False)
+    # upload_form_target_lang_choices = forms.CharField(label='', widget=forms.Select(choices=LANGUAGE_CHOICES, attrs={
+    #                                       'class': 'mb-4 shadow-sm dropdown btn btn-outline-secondary'}), required=False)
 
-class GameForm(forms.Form):
+class TranslationMenuForm(forms.Form):
     source_lang_choices = forms.CharField(label='', widget=forms.Select(choices=LANGUAGE_CHOICES, attrs={
+                                          'class': 'mb-4 shadow-sm dropdown btn btn-outline-secondary'}), required=False)
+    target_lang_choices = forms.CharField(label='', widget=forms.Select(choices=LANGUAGE_CHOICES, attrs={
+                                          'class': 'mb-4 shadow-sm dropdown btn btn-outline-secondary'}), required=False)
+    checkbox_field = forms.BooleanField(label='Translate only comments', required=False)
+    
+class GameForm(forms.Form):
+    game_form_source_lang_choices = forms.CharField(label='', widget=forms.Select(choices=LANGUAGE_CHOICES, attrs={
                                           'class': 'mb-4 shadow-sm dropdown btn btn-outline-secondary'}), required=False)
     game = forms.CharField(widget=forms.Textarea(attrs={
                            "rows": 10, "cols": 75, 'placeholder': 'Paste PGN', 'class': 'form-control shadow'}), label='', required=False)
@@ -34,7 +45,15 @@ class GameForm(forms.Form):
 LANGUAGE_CHOICES[0], LANGUAGE_CHOICES[1] = LANGUAGE_CHOICES[1], LANGUAGE_CHOICES[0]
 
 class TranslatedGame(forms.Form):
-    target_lang_choices = forms.CharField(label='', widget=forms.Select(choices=LANGUAGE_CHOICES, attrs={
+    translated_game_target_lang_choices = forms.CharField(label='', widget=forms.Select(choices=LANGUAGE_CHOICES, attrs={
                                           'class': 'mb-4 shadow-sm dropdown btn btn-outline-secondary'}), required=False)
     translated_pgn = forms.CharField(widget=forms.Textarea(
         attrs={"rows": 10, "cols": 75, 'readonly': 'readonly', 'class': 'form-control shadow'}), label='', required=False)
+    
+
+
+
+
+
+
+
