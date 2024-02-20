@@ -1,31 +1,27 @@
 <!DOCTYPE html>
 {% extends "pgn_translator/base.html" %}
 {% load static %}
+{% load bootstrap5 %}
 
 {% block content %}
 <section class="container mx-auto translator__forms">
-    
-    <form method="POST" enctype="multipart/form-data"> 
-        {% csrf_token %} 
-        {{ input_pgn_file.as_p }} 
-        <input type="submit" value="Submit"> 
-    </form> 
 
-    
-    <form id="forms" action="{% url 'translated_game' %}" method="post">
-        {% csrf_token %}
-        <div class="d-md-flex">
-            <div class="target__form">
-                {{ source_form}} 
+{% include 'components/pages_selection.html' %}
+
+<form id="forms" action="{% url 'translated_game' %}" method="post">
+    {% csrf_token %}
+    <div class="d-md-flex">
+        <div class="target__form">
+            {{ source_form}}
             <div class="d-grid d-md-block">
                 <button class="btn shadow-sm mt-4 translate__btn" onclick="sampleGame()">English Game Fragment</button>
-            </div> 
-            </div>
-            <div>
-                {{ target_form.as_div}}
             </div>
         </div>
-    </form>
+        <div>
+            {{ target_form.as_div}}
+        </div>
+    </div>
+</form>
 </section>
 
 <script src="{% static 'pgn_translator/index.js' %}"></script>
