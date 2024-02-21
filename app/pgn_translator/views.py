@@ -79,15 +79,16 @@ def file_upload(request):
         
         input_pgn_file_form = UploadPgnForm(request.POST,request.FILES)
         if input_pgn_file_form.is_valid(): 
-            pgn_content= handle_uploaded_file(request.FILES["upload_pgn_file"])
-            context['file_content'] = pgn_content 
-            game = pgn_content
+            pgn_file_content= handle_uploaded_file(request.FILES["upload_pgn_file"])
+            context['file_content'] = pgn_file_content 
+            game = pgn_file_content
 
         source_lang_form = TranslationMenuForm(request.POST)
         target_lang_form = TranslationMenuForm(request.POST)
         
         if source_lang_form.is_valid() and target_lang_form.is_valid():
-            game = source_lang_form.cleaned_data['game']
+            # game = source_lang_form.cleaned_data['game']
+            game = pgn_file_content
             source_language = source_lang_form.cleaned_data['source_lang_choices']
             target_language = target_lang_form.cleaned_data['target_lang_choices']
             translated_pgn_moves = translate_pgn_game(
@@ -97,7 +98,7 @@ def file_upload(request):
             translated_game = translate_tags_comments(
                 source_language, target_language, translated_pgn_moves)
 
-            target_lang_form = TranslatedGame(
+            target_lang_form = TranslationMenuForm(
                 initial={'target_lang_choices': target_language, 'translated_pgn': translated_game})
             context['translated_game'] = translated_game
 

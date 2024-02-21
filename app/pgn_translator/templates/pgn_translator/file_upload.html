@@ -8,13 +8,14 @@
 {% include 'components/pages_selection.html' %}
 
 
-  <form method="POST" enctype="multipart/form-data">
+  <form id="upload_file_forms"  method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ input_pgn_file.as_p }}
+    {{ input_pgn_file.as_div }}
+    {{ source_form.as_div}}
     <input type="submit" value="Submit">
   </form>
 
-  {% include 'components/translation_menu.html' %}
+  
 
   <div class="dropdown mt-5">
     <button class="btn btn-outline-secondary dropdown-toggle btn-block" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -28,7 +29,7 @@
   </div>
   
   <div class="pgn__game shadow mt-3">
-    <p>Display PGN game</p>
+    <p>{{ translated_game }}</p>
   </div>
    <a href="{}" class="btn btn-primary shadow-sm mt-4 translate__btn">Download PGN </a>
 </section>
