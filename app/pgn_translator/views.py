@@ -1,6 +1,6 @@
 from typing import IO
 from django.shortcuts import render
-from app.pgn_translator.translate_pgn import translate_pgn_game, translate_tags_comments
+from app.pgn_translator.translate_pgn import translate_comments, translate_pgn_game, translate_tags_comments
 from .forms import GameForm,TranslatedGame, TranslationMenuForm, UploadPgnForm
 
 def write_to_disk(file_upload_stream: IO[str]) -> None:
@@ -38,7 +38,7 @@ def index(request):
     context = {}
 
     if request.method == "POST":
-        
+     
         input_pgn_file_form = UploadPgnForm(request.POST,request.FILES)
         if input_pgn_file_form.is_valid(): 
             pgn_content= handle_uploaded_file(request.FILES["upload_pgn_file"])
@@ -76,31 +76,56 @@ def file_upload(request):
     context = {}
 
     if request.method == "POST":
-        
-        input_pgn_file_form = UploadPgnForm(request.POST,request.FILES)
-        if input_pgn_file_form.is_valid(): 
-            pgn_file_content= handle_uploaded_file(request.FILES["upload_pgn_file"])
-            context['file_content'] = pgn_file_content 
-            game = pgn_file_content
+        if 'translate_comments_checkbox' in request.POST:
+            checkbox_value = request.POST['translate_comments_checkbox']
+            
+            if checkbox_value == 'on':
+                input_pgn_file_form = UploadPgnForm(request.POST,request.FILES)
+                if input_pgn_file_form.is_valid(): 
+                    pgn_file_content= handle_uploaded_file(request.FILES["upload_pgn_file"])
+                    context['file_content'] = pgn_file_content 
+                    game = pgn_file_content
 
-        source_lang_form = TranslationMenuForm(request.POST)
-        target_lang_form = TranslationMenuForm(request.POST)
-        
-        if source_lang_form.is_valid() and target_lang_form.is_valid():
-            # game = source_lang_form.cleaned_data['game']
-            game = pgn_file_content
-            source_language = source_lang_form.cleaned_data['source_lang_choices']
-            target_language = target_lang_form.cleaned_data['target_lang_choices']
-            translated_pgn_moves = translate_pgn_game(
-                source_language, target_language, game)
+                source_lang_form = TranslationMenuForm(request.POST)
+                target_lang_form = TranslationMenuForm(request.POST)
+                
+                if source_lang_form.is_valid() and target_lang_form.is_valid():
+                    game = pgn_file_content
+                    source_language = source_lang_form.cleaned_data['source_lang_choices']
+                    target_language = target_lang_form.cleaned_data['target_lang_choices']
+                    
+                    # Translate game comments.
+                    translated_game_comments = translate_comments(
+                        source_language, target_language, game)
 
-            # Translate game comments.
-            translated_game = translate_tags_comments(
-                source_language, target_language, translated_pgn_moves)
+                    target_lang_form = TranslationMenuForm(
+                        initial={'target_lang_choices': target_language, 'translated_pgn': translated_game_comments})
+                    context['translated_game'] = translated_game_comments
+            
+            else:
+                input_pgn_file_form = UploadPgnForm(request.POST,request.FILES)
+                if input_pgn_file_form.is_valid(): 
+                    pgn_file_content= handle_uploaded_file(request.FILES["upload_pgn_file"])
+                    context['file_content'] = pgn_file_content 
+                    game = pgn_file_content
 
-            target_lang_form = TranslationMenuForm(
-                initial={'target_lang_choices': target_language, 'translated_pgn': translated_game})
-            context['translated_game'] = translated_game
+                source_lang_form = TranslationMenuForm(request.POST)
+                target_lang_form = TranslationMenuForm(request.POST)
+                
+                if source_lang_form.is_valid() and target_lang_form.is_valid():
+                    game = pgn_file_content
+                    source_language = source_lang_form.cleaned_data['source_lang_choices']
+                    target_language = target_lang_form.cleaned_data['target_lang_choices']
+                    translated_pgn_moves = translate_pgn_game(
+                        source_language, target_language, game)
+
+                    # Translate game comments.
+                    translated_game = translate_tags_comments(
+                        source_language, target_language, translated_pgn_moves)
+
+                    target_lang_form = TranslationMenuForm(
+                        initial={'target_lang_choices': target_language, 'translated_pgn': translated_game})
+                    context['translated_game'] = translated_game
 
     else:
         
@@ -113,5 +138,43 @@ def file_upload(request):
 
 def about(request):
     return render(request, "pgn_translator/about.html")
+
+# def file_upload(request):
+#     context = {}
+
+#     if request.method == "POST":
+#         if 'translate_comments' in request.POST:
+#             input_pgn_file_form = UploadPgnForm(request.POST,request.FILES)
+#             if input_pgn_file_form.is_valid(): 
+#                 pgn_file_content= handle_uploaded_file(request.FILES["upload_pgn_file"])
+#                 context['file_content'] = pgn_file_content 
+#                 game = pgn_file_content
+
+#             source_lang_form = TranslationMenuForm(request.POST)
+#             target_lang_form = TranslationMenuForm(request.POST)
+            
+#             if source_lang_form.is_valid() and target_lang_form.is_valid():
+#                 game = pgn_file_content
+#                 source_language = source_lang_form.cleaned_data['source_lang_choices']
+#                 target_language = target_lang_form.cleaned_data['target_lang_choices']
+#                 translated_pgn_moves = translate_pgn_game(
+#                     source_language, target_language, game)
+
+#                 # Translate game comments.
+#                 translated_game = translate_tags_comments(
+#                     source_language, target_language, translated_pgn_moves)
+
+#                 target_lang_form = TranslationMenuForm(
+#                     initial={'target_lang_choices': target_language, 'translated_pgn': translated_game})
+#                 context['translated_game'] = translated_game
+
+#     else:
+        
+#         input_pgn_file_form = UploadPgnForm()
+#         source_lang_form = TranslationMenuForm()
+#         target_lang_form = TranslationMenuForm()
+
+#     context.update({'input_pgn_file': input_pgn_file_form, 'source_form': source_lang_form, 'target_form': target_lang_form})
+#     return render(request, 'pgn_translator/file_upload.html', context)
 
 

@@ -33,7 +33,7 @@ class TranslationMenuForm(forms.Form):
                                           'class': 'mb-4 shadow-sm dropdown btn btn-outline-secondary'}), required=False)
     target_lang_choices = forms.CharField(label='', widget=forms.Select(choices=LANGUAGE_CHOICES, attrs={
                                           'class': 'mb-4 shadow-sm dropdown btn btn-outline-secondary'}), required=False)
-    checkbox_field = forms.BooleanField(label='Translate only comments', required=False)
+    translate_comments_checkbox= forms.BooleanField(label='Translate only comments', required=False)
     
 class GameForm(forms.Form):
     game_form_source_lang_choices = forms.CharField(label='', widget=forms.Select(choices=LANGUAGE_CHOICES, attrs={
