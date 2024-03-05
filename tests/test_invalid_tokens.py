@@ -1,5 +1,5 @@
 import unittest
-from translator.pgn_translator import translate_pgn_move_token
+from app.pgn_translator.translate_pgn import translate_pgn_move_token
 
 invalid_tokens = [
     {

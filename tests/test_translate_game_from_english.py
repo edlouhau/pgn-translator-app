@@ -1,5 +1,5 @@
 import unittest
-from translator.pgn_translator import translate_pgn_game
+from app.pgn_translator.translate_pgn import translate_pgn_game
 
 valid_game_case = [
     {
