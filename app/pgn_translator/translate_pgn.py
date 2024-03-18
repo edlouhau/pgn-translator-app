@@ -84,3 +84,16 @@ def translate_tags_comments(source_language, target_language, game):
     
     game = re.sub(tags_comments_pattern, lambda x: translate_natural_lang(x), game)
     return game
+
+def translate_comments(source_language, target_language, game):
+    """
+    Finds the comments in the game, translates them, and replaces them.
+    """
+    tags_comments_pattern = r'\{[\s\S]*?\}'
+    
+    def translate_natural_lang(match):
+        translator = GoogleTranslator(source=source_language, target=target_language)
+        return translator.translate(match.group())
+    
+    game = re.sub(tags_comments_pattern, lambda x: translate_natural_lang(x), game)
+    return game

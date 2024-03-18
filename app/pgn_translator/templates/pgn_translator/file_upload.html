@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% extends "pgn_translator/base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="container mx-auto translator__forms">
+
+{% include 'components/pages_selection.html' %}
+
+
+  <form id="upload_file_forms"  method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ input_pgn_file.as_div }}
+    {{ source_form.as_div}}
+    <input type="submit" value="Translate PGN">
+  </form>
+
+  
+
+  <div class="dropdown mt-5">
+    <button class="btn btn-outline-secondary dropdown-toggle btn-block" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      F/S Return Match
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+    </div>
+  </div>
+  
+  <div class="pgn__game shadow mt-3">
+    <p>{{ translated_game }}</p>
+  </div>
+   <a href="{}" class="btn btn-primary shadow-sm mt-4 translate__btn">Download PGN </a>
+</section>
+
+<script src="{% static 'pgn_translator/index.js' %}"></script>
+{% endblock content %}
