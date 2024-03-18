@@ -2,6 +2,7 @@ from typing import IO
 from django.shortcuts import render
 from app.pgn_translator.translate_pgn import translate_comments, translate_pgn_game, translate_tags_comments
 from .forms import GameForm,TranslatedGame, TranslationMenuForm, UploadPgnForm
+import os
 
 def write_to_disk(file_upload_stream: IO[str]) -> None:
     """
@@ -13,6 +14,27 @@ def write_to_disk(file_upload_stream: IO[str]) -> None:
     with open('app/pgn_translator/uploads/'+file_upload_stream.name, 'wb+') as destination:
         for chunk in file_upload_stream.chunks():
             destination.write(chunk)
+
+def write_to_disk_translated_file(file_name,translated_game: IO[str]) -> None:
+    """
+    Writes an IO stream to file on disk
+
+    Args:
+        file_upload_stream (IO[str]): The file to write to disk
+    """
+    # Specify the directory where you want to save the file
+    save_directory = 'app/pgn_translator/translated_files'
+    
+    # Ensure the directory exists, create it if it doesn't
+    os.makedirs(save_directory, exist_ok=True)
+    
+    # Construct the file path
+    file_path = os.path.join(save_directory, file_name)
+    
+    # Open the file for writing
+    with open(file_path, 'w') as file:
+        # Write the content to the file
+        file.write(translated_game)
 
 def read_from_disk(file: IO[str]) -> str:
     """
@@ -27,7 +49,7 @@ def read_from_disk(file: IO[str]) -> str:
     with open('app/pgn_translator/uploads/'+file.name, 'r') as file:
         content = file.read()
         return content
-
+            
 def handle_uploaded_file(f):
     write_to_disk(f)
     content = read_from_disk(f)
@@ -97,7 +119,11 @@ def file_upload(request):
                     # Translate game comments.
                     translated_game_comments = translate_comments(
                         source_language, target_language, game)
-
+                    
+                    # Save translated_game_comments as a text file
+                    file_name = request.FILES["upload_pgn_file"].name
+                    write_to_disk_translated_file(file_name,translated_game_comments)
+                    
                     target_lang_form = TranslationMenuForm(
                         initial={'target_lang_choices': target_language, 'translated_pgn': translated_game_comments})
                     context['translated_game'] = translated_game_comments
